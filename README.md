@@ -1,6 +1,6 @@
 # exitnodeshuffle
 Switch up your ssh tunnels through tor. Because exit nodes are often compromised.
-
+<pre>
 echo
 echo '###################################################'
 echo
@@ -13,7 +13,7 @@ echo "╚══════╝╚═╝  ╚═╝╚══════╝╚═
 echo "                                                 ";
 echo " because... let's face it -- tor exit nodes suck.";
 echo '###################################################'
-
+</pre>
 echo -e " ProxUP ~ exitHopOR ~ The Exit Node Savior 
 Sleep deprivation ... I couldn't decide on a name. "		
 
