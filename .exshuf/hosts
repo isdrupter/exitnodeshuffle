@@ -1,0 +1,2 @@
+# Hosts referanced from your ssh config file
+proxhosts="hostnames pwned1 pwned2 pwned3"
