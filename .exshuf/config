@@ -1,0 +1,81 @@
+# exshuf config file
+#######################################################
+
+# READ THIS ENTIRE FILE!!!
+
+#######################################################
+
+# First you *must* symlink your ssh binary to 
+# /usr/local/sbin/ssh-proxy
+
+# The Whonix-Workstation comes with a stream isolating
+# friendly ssh alternative. However, this bin doesn't 
+# seem to work well with tunnels, if at all. Instead,
+# use the standard ssh client, "ssh.anondist-orig"
+
+# symlink "ssh.anondist-orig" to "/usr/local/sbin/ssh-proxy"
+# run as root:
+# ln -s `which ssh.anondist-orig` /usr/local/sbin/ssh
+
+# Otherwise, symlink ssh or preferably autossh instead.
+# This is so we can find the process with pgrep. If not 
+# using the whonix-whorkstation, than prefer autossh.
+
+######################################################
+ssh_bin="/usr/local/sbin/ssh-proxy"
+#ssh_bin='autossh -M 0 '
+#ssh_bin=ssh
+######################################################
+# Where to store the pidfile (in case you need it)
+
+pidf="~/.ssh/prox.pid"
+
+######################################################
+# Socks Port for dynamic proxy. This is where you'll
+# point your browsers and stuff. Chain with privoxy
+# for slightly better anonyminity.
+
+dport="1080"
+
+######################################################
+# IMPORTANT! Undefined if not behind a transproxy! If you're
+# not using a transproxy or Whonix, install  torify or 
+# tsocks or this won't work at all!
+
+#whonix_mode='true'
+
+######################################################
+# IMPORTANT: For NON transproxy/whonix use !!!
+######################################################
+# Define proxychains, torify, socks, or something to
+# tor prefix ssh command with. This is for NON WN use
+# only, as dns cannot resolve or route .onion urls!
+
+#proxy_bin="torify"
+
+
+######################################################
+# !!!WARNING!!! Not using tor is psuedo-anonymous, 
+# that's likely NOT what you want! Uncomment if you
+# *really* intend to use this script withOUT tor.
+######################################################
+#non_tor=seriously_yeah_dude
+
+######################################################
+# This line is here to make sure you read the entire 
+# file. Uncomment and you are set!
+#iDidntReadTheConfigFile=1
+
+
+#######################################################
+# Other Functions
+#######################################################
+# You can crete other proxy tunnel configs here, if you
+# wish, and than load them with 
+
+
+otherproxy(){
+echo "Attempting to establish tunnel..."
+ssh.anondist-orig -fNL 6667:127.0.0.1:6667 somwhere
+if [[ "$?" -eq "0" ]] ; then echo "Successfully connected!" ; fi
+}
